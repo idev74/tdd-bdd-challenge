@@ -25,9 +25,28 @@ it("should say hello", function() {
 // 4. Finally see if you would like to refactor your code at all.
 // This is called "Red-Green-Refactor"
 // ========================================================
+it("should return the area of a 5 by 7 rectangle", function() {
+  const area = utils.area(5, 7)
+  expect(area).to.be.a("number")
+  expect(area).to.equal(35)
+})
 
+it("should return the perimeter of a 5 by 7 rectangle", function() {
+  const perimeter = utils.perimeter(5, 7)
+  expect(perimeter).to.be.a("number")
+  expect(perimeter).to.equal(24)
+})
 
+it("should return the area of a circle of radius 5", function() {
+  const area = utils.circleArea(5)
+  expect(area).to.be.a("number")
+  expect(area).to.equal(78.53981633974483)
+})
 
+it("should return null if width, breadth, or radius is negative", function() {
+  const area = utils.area(-5, 7)
+  expect(area).to.be.a("null")
+})
 
 // ========================================================
 // Level 2 Challenges
