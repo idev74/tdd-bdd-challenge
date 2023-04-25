@@ -37,28 +37,47 @@ const clearCart = () => {
   shoppingCart.length = 0
 }
 
-const createItem = (name, price) => {
-  return { name, price, quantity: 1 }
+const createItem = (name, price, quantity) => {
+  return { name, price, quantity }
 }
 
 const getShoppingCart = () => {
-  // should return the current state of shopping cart
+  return shoppingCart
 }
 
 const addItemToCart = (item) => {
-  // should add item to shopping cart
+  return shoppingCart.push(item)
 }
 
-const getNumItemsInCart = () => {
-  // should return the total quantity of items in cart
+const getNumItemsInCart = (item) => {
+  let total = 0
+  for (let i = 0; i < shoppingCart.length; i++) {
+    total += shoppingCart[i].quantity
+  }
+  return total
 }
 
 const removeItemFromCart = (item) => {
-  // should remove item from shopping cart
+  const i = shoppingCart.indexOf(item)
+  if (i > -1) {
+    return shoppingCart.splice(item, 1)
+  }
+}
+
+const isEmpty = () => {
+  return shoppingCart.length === 0 ? true : false
+}
+
+const totalCost = () => {
+  let total = 0
+  for (let i = 0; i < shoppingCart.length; i++) {
+    total += shoppingCart[i].price * shoppingCart[i].quantity
+  }
+  return total
 }
 
 module.exports = {
   sayHello, area, perimeter, circleArea,
   clearCart, createItem, getShoppingCart, addItemToCart,
-  getNumItemsInCart, removeItemFromCart
+  getNumItemsInCart, removeItemFromCart, isEmpty, totalCost
 }
